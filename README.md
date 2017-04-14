@@ -62,4 +62,4 @@ Socket编程，不使用任何现有的库或框架。
 
 #### GUI版本
 
-
+![Alt text](./ftp.png)
