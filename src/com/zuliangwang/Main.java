@@ -6,6 +6,9 @@ import java.util.Scanner;
  * Created by zuliangwang on 17/4/9.
  */
 public class Main {
+
+    private String myFtpServerIp = "104.194.89.182";
+
     public static void main(String[] args) throws Exception {
         // TODO Auto-generated method stub
 
@@ -15,8 +18,8 @@ public class Main {
         System.out.println("Welcome to Ftp Client");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please Input the Ftp Server Host Address");
-//        ftp.setHost(scanner.nextLine());
         ftp.setHost("104.194.89.182");
+//        ftp.setHost(scanner.next());
         System.out.println("Please Input your UserName");
         ftp.user.setUserName(scanner.nextLine());
 //        ftp.user.setUserName("zuliangwang");

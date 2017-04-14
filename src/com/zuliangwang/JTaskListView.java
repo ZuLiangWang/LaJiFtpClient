@@ -34,7 +34,6 @@ public class JTaskListView extends JPanel {
 
         JLabel lastChangedTime = new JLabel("完成进度");
         lastChangedTime.setSize(40,40);
-//        label.setHorizontalAlignment();
 
 
         list = new JList();
