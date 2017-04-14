@@ -56,7 +56,8 @@ public class SimpleFTP {
         this.defaultLocalFileDir = defaultLocalFileDir;
     }
 
-    private String defaultLocalFileDir = "/Users/zuliangwang";
+//    private String defaultLocalFileDir = "/Users/zuliangwang";
+    private String defaultLocalFileDir = "./";
 
     public SimpleFTP() {
 
