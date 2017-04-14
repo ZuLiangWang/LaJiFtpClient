@@ -2,7 +2,9 @@
 
 实验一：Ftp客户端。
 
-*Require：*
+*Require：*  
+Socket编程，不使用任何现有的库或框架。  
+使用Java Socket Api编写Ftp客户端。
 >编写一个FTP客户端，要求如下：
 
 >第一级：

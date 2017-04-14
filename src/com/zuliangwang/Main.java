@@ -10,7 +10,6 @@ public class Main {
     private String myFtpServerIp = "104.194.89.182";
 
     public static void main(String[] args) throws Exception {
-        // TODO Auto-generated method stub
 
 
         SimpleFTP  ftp = new SimpleFTP();
