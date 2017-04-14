@@ -1,8 +1,8 @@
-﻿华中科技大学计算机网络课程实验。
+##华中科技大学计算机网络课程实验。
 
 实验一：Ftp客户端。
 
-Require：
+*Require：*
 >编写一个FTP客户端，要求如下：
 
 >第一级：
@@ -39,19 +39,22 @@ Require：
 具备完成所需功能的基本图形用户界面（GUI），并具友好性。
 
 
-How To Use:
+### How To Use:
 两个入口类：
+
 无GUI版本，Shell中运行，入口类Main。
+
 使用Swing编写的简单GUI，入口类FtpGui。
 
-目前支持的命令：
-1.get 
-2.put
-3.bye
-4.cd
-5.pwd
-6.port(需要ftp服务器支持)
-7.passive
+####目前支持的命令：
+1. get 
+2. put
+3. bye
+4. cd
+5. pwd
+6. port(需要ftp服务器支持)
+7. passive
+
 登陆方式支持匿名登陆和账号登陆。
 匿名登陆账号为Anonymous 密码为任意值。
 
