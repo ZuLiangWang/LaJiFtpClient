@@ -56,6 +56,8 @@ Socket编程，不使用任何现有的库或框架。
 5. pwd
 6. port(需要ftp服务器支持)
 7. passive
+8. pause
+9. ls
 
 登陆方式支持匿名登陆和账号登陆。  
 匿名登陆账号为Anonymous 密码为任意值。
