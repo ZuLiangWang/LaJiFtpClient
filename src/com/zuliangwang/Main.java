@@ -67,7 +67,7 @@ public class Main {
                     case ftp:
                         break;
                     case pause:
-                        ftp.pauseGet("zz.dmg");
+//                        ftp.pause("",1);
                         break;
                     case port:
                         ftp.port();

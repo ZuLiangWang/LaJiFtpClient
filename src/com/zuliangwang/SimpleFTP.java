@@ -213,7 +213,7 @@ public class SimpleFTP {
 
         if (lisenter!=null)
         lisenter.before(localFilePath,0);
-        startDownloadThread(bufferedInputStream,localFilePath,0);
+        startDownloadThread(bufferedInputStream,remoteFilePath,localFilePath,0);
         if (lisenter!=null)
         lisenter.after(localFilePath);
         readLine(reader);
@@ -322,12 +322,12 @@ public class SimpleFTP {
 
         BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(dataSocket.getOutputStream());
 
-        startLoadThread(bufferedOutputStream,localFilePath,0);
+        startLoadThread(bufferedOutputStream,remoteFilePath,localFilePath,0);
         readLine(reader);
 
     }
 
-    private void startDownloadThread(BufferedInputStream inputStream,String localFilePath,int offset){
+    private void startDownloadThread(BufferedInputStream inputStream,String remoteFilePath,String localFilePath,int offset){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -343,11 +343,16 @@ public class SimpleFTP {
                     e.printStackTrace();
                 }
                 System.out.println("finish");
+                try {
+                    checkFile(remoteFilePath,localFilePath);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }).start();
     }
 
-    private void startLoadThread(BufferedOutputStream outputStream,String localFilePath,int offset){
+    private void startLoadThread(BufferedOutputStream outputStream,String remoteFilePath,String localFilePath,int offset){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -366,6 +371,11 @@ public class SimpleFTP {
                         e.printStackTrace();
                     }
                 System.out.println("finish");
+                try {
+                    checkFile(remoteFilePath,localFilePath);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }).start();
     }
@@ -466,6 +476,31 @@ public class SimpleFTP {
     public void port(){
         this.dataConncetType = 1;
         System.out.println("Port Mode On");
+    }
+
+    private long getRemoteFileSize(String remoteFilePath) throws Exception {
+
+        sendLine("SIZE "+remoteFilePath,writer);
+        String response = readLine(reader);
+        return Long.getLong(response);
+    }
+
+    //考虑使用hash算法校验文件 如果文件内容相同 则hashcode的值相同 但是由于不能获取服务器上文件的hashcode
+    //因此简单的校验两边文件的大小
+    public boolean checkFile(String remoteFilePath,String localFilePath) throws Exception {
+        File localFile = new File(localFilePath);
+        long localFileSize = localFile.length();
+
+        long remoteFileSize = getRemoteFileSize(remoteFilePath);
+
+        if (localFileSize == remoteFileSize){
+            System.out.println("check true");
+            return true;
+        }
+        else{
+            System.out.println("check false");
+            return false;
+        }
     }
 
     public static enum Instruction{
